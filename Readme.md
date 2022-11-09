@@ -12,4 +12,4 @@
 
 Then navigate to http://localhost:3000/
 
-To open swagger API documentation: http:localhost:8000/api/documentation
+To open swagger API documentation: http://localhost:8000/api/documentation
