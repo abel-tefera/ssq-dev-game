@@ -1,0 +1,138 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "SSQ-DEV Application API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/kpi/upload": {
+            "post": {
+                "tags": [
+                    "kpiUpload"
+                ],
+                "summary": "Bulk upload KPI from a file",
+                "description": "Store KPI object by using upload file",
+                "operationId": "uploadFile",
+                "requestBody": {
+                    "description": "Upload the file",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully uploaded",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "fileStatus": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong kpi format. Please try again"
+                                        },
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/kpi": {
+            "post": {
+                "tags": [
+                    "kpi"
+                ],
+                "summary": "Store KPI object",
+                "description": "Store KPI object by using form",
+                "operationId": "storeKpi",
+                "requestBody": {
+                    "description": "Pass kpi values",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "year",
+                                    "month",
+                                    "value",
+                                    "type",
+                                    "subtype"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "somebody@hiring.ssq.nl"
+                                    },
+                                    "year": {
+                                        "type": "integer",
+                                        "example": "2021"
+                                    },
+                                    "month": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "value": {
+                                        "type": "integer",
+                                        "example": "20"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "individual"
+                                    },
+                                    "subtype": {
+                                        "type": "string",
+                                        "example": "hours"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong kpi response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong kpi format. Please try again"
+                                        },
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

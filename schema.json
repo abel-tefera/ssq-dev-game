@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "email": {
+            "type": "string",
+            "maxLength": 128,
+            "format": "email"
+        },
+        "year": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6000
+        },
+        "month": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 12
+        },
+        "value": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "type": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9\\-]+(\\s[a-zA-Z0-9\\-]+)*$"
+        },
+        "subtype": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9\\-]+(\\s[a-zA-Z0-9\\-]+)*$"
+        }
+    },
+    "required": ["email", "year", "month", "value", "type", "subtype"],
+    "additionalProperties": false
+}
